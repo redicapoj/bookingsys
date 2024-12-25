@@ -1,17 +1,22 @@
 package org.bookingsys.entities;
 
+import org.bookingsys.constants.RoomStatus;
+import org.bookingsys.constants.RoomType;
+
 public class Room {
     private int id;
     private String name;
+    private RoomType type;
     private String description;
     private double pricePerNight;
-    private String status;
+    private RoomStatus status;
 
     public Room() {}
 
-    public Room(int id, String name, String description, double pricePerNight, String status) {
+    public Room(int id, String name, RoomType type, String description, double pricePerNight, RoomStatus status) {
         this.id = id;
         this.name = name;
+        this.type = type;
         this.description = description;
         this.pricePerNight = pricePerNight;
         this.status = status;
@@ -33,6 +38,14 @@ public class Room {
         this.name = name;
     }
 
+    public RoomType getType() {
+        return type;
+    }
+
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -49,11 +62,11 @@ public class Room {
         this.pricePerNight = pricePerNight;
     }
 
-    public String getStatus() {
+    public RoomStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 
