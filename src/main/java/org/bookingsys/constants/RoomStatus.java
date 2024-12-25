@@ -1,7 +1,16 @@
 package org.bookingsys.constants;
 
-public class RoomStatus {
-    public static final String AVAILABLE = "available";
-    public static final String BOOKED = "booked";
-    public static final String PENDING = "pending";
+public enum RoomStatus {
+    AVAILABLE("available"),
+    BOOKED("booked"),
+    PENDING("pending");
+
+    RoomStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+    public String getStatus() {
+        return status;
+    }
 }
