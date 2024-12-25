@@ -1,3 +1,4 @@
+// Function to add customer to the database
 document.getElementById("customerForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -7,7 +8,6 @@ document.getElementById("customerForm").addEventListener("submit", async functio
     const responseDiv = document.getElementById("response");
 
     if (!responseDiv) {
-        console.error("Response div not found!");
         return;
     }
 
@@ -32,7 +32,7 @@ document.getElementById("customerForm").addEventListener("submit", async functio
 // Function to load and display rooms
 async function loadRooms() {
     const roomsContainer = document.getElementById("roomsContainer");
-    const roomSelect = document.getElementById("room"); // Room select dropdown
+    const roomSelect = document.getElementById("room");
 
     try {
         const response = await fetch("http://localhost:8080/bookingsys/rooms");
@@ -43,21 +43,18 @@ async function loadRooms() {
 
         const rooms = await response.json();
 
-        // Clear existing room options and room data
         roomsContainer.innerHTML = '';
-        roomSelect.innerHTML = ''; // Clear the select dropdown
+        roomSelect.innerHTML = '';
 
-        // Add a default "Please select" option
         const defaultOption = document.createElement("option");
         defaultOption.textContent = "Select a room";
         defaultOption.value = "";
         roomSelect.appendChild(defaultOption);
 
-        // Dynamically create HTML for each room and add to the dropdown
         rooms.forEach(room => {
             const roomOption = document.createElement("option");
-            roomOption.value = room.id; // Use the room's ID as the value
-            roomOption.textContent = `${room.name} (${room.type})`; // Display room name and type
+            roomOption.value = room.id;
+            roomOption.textContent = `${room.name} (${room.type})`;
             roomSelect.appendChild(roomOption);
 
             const roomElement = document.createElement("div");
