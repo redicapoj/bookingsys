@@ -8,13 +8,12 @@ public class Reservation {
     private LocalDate checkinDate;
     private LocalDate checkoutDate;
     private double totalPayment;
-    private Customer customer;
-    private Room room;
+    private int customer;
+    private int room;
 
     public Reservation() {}
 
-    public Reservation(int id, LocalDate reservationDate, LocalDate checkinDate, LocalDate checkoutDate, double totalPayment, Customer customer, Room room) {
-        this.id = id;
+    public Reservation(LocalDate reservationDate, LocalDate checkinDate, LocalDate checkoutDate, double totalPayment, int customer, int room) {
         this.reservationDate = reservationDate;
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;
@@ -63,19 +62,19 @@ public class Reservation {
         this.totalPayment = totalPayment;
     }
 
-    public Customer getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 
-    public Room getRoom() {
+    public int getRoom() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(int room) {
         this.room = room;
     }
 
