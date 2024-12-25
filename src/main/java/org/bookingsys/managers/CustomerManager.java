@@ -14,7 +14,7 @@ public class CustomerManager {
         return instance;
     }
 
-    public void addCustomer(String firstName, String lastName, String email, String phone, String licencePlate) {
+    public int addCustomer(String firstName, String lastName, String email, String phone, String licencePlate) {
 
         if (firstName == null || lastName == null || email == null || phone == null || licencePlate == null) {
             throw new IllegalArgumentException("Customer details cannot be null");
@@ -28,20 +28,23 @@ public class CustomerManager {
         customer.setLicencePlate(licencePlate);
 
         try {
-            dao.saveCustomer(customer);
-            System.out.println("Customer created successfully!");
+            int customerId = dao.saveCustomer(customer);
+            System.out.println("Customer created successfully.");
+            return customerId;
         } catch (Exception e) {
             System.out.println("Error creating customer: " + e.getMessage());
+            throw new RuntimeException("Failed to create customer.");
         }
     }
 
-    public void addCustomer(Customer customer) {
-
+    public int addCustomer(Customer customer) {
         try {
-            dao.saveCustomer(customer);
-            System.out.println("Customer created successfully!");
+            int customerId = dao.saveCustomer(customer);
+            System.out.println("Customer created successfully.");
+            return customerId;
         } catch (Exception e) {
             System.out.println("Error creating customer: " + e.getMessage());
+            throw new RuntimeException("Failed to create customer.");
         }
     }
 
