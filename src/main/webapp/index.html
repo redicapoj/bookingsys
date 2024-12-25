@@ -25,9 +25,19 @@
         <label for="licencePlate">Licence Plate:</label>
         <input type="text" id="licencePlate" name="licencePlate" required>
 
+        <!-- Dropdown for selecting room -->
+        <label for="room">Select Room:</label>
+        <select id="room" name="room" required>
+            <!-- Room options will be dynamically populated here -->
+        </select>
+
         <button type="submit">Register Customer</button>
     </form>
     <div id="response"></div>
+
+    <hr> <!-- Adds a line separator -->
+    <h2>Available Rooms</h2>
+    <div id="roomsContainer"></div> <!-- This is where rooms will be displayed -->
 </div>
 
 <script src="script.js"></script>
