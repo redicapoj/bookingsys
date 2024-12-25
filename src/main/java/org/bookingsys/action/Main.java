@@ -1,10 +1,14 @@
 package org.bookingsys.action;
 
 import org.bookingsys.connection.DatabaseConnection;
+import org.bookingsys.dao.RoomDao;
 import org.bookingsys.entities.Customer;
+import org.bookingsys.entities.Room;
 import org.bookingsys.managers.CustomerManager;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -55,6 +59,14 @@ public class Main {
         CustomerManager.getInstance().addCustomer(customer);
     }
 
+    public static void testingRoomFetcher() throws SQLException {
+        RoomDao roomDao = new RoomDao();
+        List<Room> rooms = roomDao.fetchRooms();
+        for (Room room : rooms) {
+            System.out.println(room);
+        }
+    }
+
     public static void main(String[] args) {
 
         // Connecting with DB
@@ -63,9 +75,11 @@ public class Main {
             System.out.println("Connected to database");
 
             // Starting the program
-            String[] data = input();
+            /*String[] data = input();
             Customer customer = createCustomer(data);
-            saveCustomer(customer);
+            saveCustomer(customer);*/
+
+            testingRoomFetcher();
 
         } catch (Exception e) {
             e.printStackTrace();
