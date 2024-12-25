@@ -28,4 +28,14 @@ public class RoomManager {
         }
         return rooms;
     }
+
+    public double getRoomPrice(int roomId) {
+        try {
+            double pricePerNight = dao.getRoomPrice(roomId);
+            return pricePerNight;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }

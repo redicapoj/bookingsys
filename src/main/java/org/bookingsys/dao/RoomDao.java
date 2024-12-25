@@ -42,4 +42,24 @@ public class RoomDao {
 
         return rooms;
     }
+
+    public double getRoomPrice(int roomId) {
+        String query = "SELECT night_price FROM rooms WHERE room_id = ?";
+        double pricePerNight = 0.0;
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setInt(1, roomId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                pricePerNight = rs.getDouble("night_price");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pricePerNight;
+    }
+
 }
