@@ -1,6 +1,5 @@
 package org.bookingsys.managers;
 
-import org.bookingsys.dao.CustomerDao;
 import org.bookingsys.dao.ReservationDao;
 import org.bookingsys.entities.Reservation;
 

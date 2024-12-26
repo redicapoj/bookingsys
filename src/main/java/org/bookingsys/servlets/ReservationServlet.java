@@ -15,10 +15,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
-@WebServlet("/add-customer")
-public class CustomerServlet extends HttpServlet {
+@WebServlet("/save-reservation")
+public class ReservationServlet extends HttpServlet {
 
-    public CustomerServlet() {}
+    public ReservationServlet() {}
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class CustomerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String licencePlate = request.getParameter("licencePlate");
 
-        // Retrieve room data from the frontend form (sent via POST)
+        // Retrieve room data from the frontend
         String roomParam = request.getParameter("room");
         if (roomParam == null || roomParam.isEmpty()) {
             response.setContentType("text/plain");
@@ -60,7 +60,6 @@ public class CustomerServlet extends HttpServlet {
         // Retrieve reservation dates from the frontend (sent via POST)
         LocalDate checkinDate = null;
         LocalDate checkoutDate = null;
-
         try {
             checkinDate = LocalDate.parse(request.getParameter("checkinDate"));
             checkoutDate = LocalDate.parse(request.getParameter("checkoutDate"));
@@ -70,10 +69,9 @@ public class CustomerServlet extends HttpServlet {
             response.getWriter().write("Invalid date format! Please use 'yyyy-MM-dd'.");
             return;
         }
-
         LocalDate currentDate = LocalDate.now();
 
-        // Validate input
+        // Validate user input
         if (firstName == null || firstName.trim().isEmpty() ||
                 lastName == null || lastName.trim().isEmpty() ||
                 email == null || email.trim().isEmpty()) {
@@ -99,11 +97,11 @@ public class CustomerServlet extends HttpServlet {
             // Success response
             response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().write("Customer added successfully!");
+            response.getWriter().write("Booking saved successfully!");
         } catch (Exception e) {
             response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().write("Failed to add customer. Please try again later.");
+            response.getWriter().write("Failed to make booking. Please try again later.");
         }
     }
 }

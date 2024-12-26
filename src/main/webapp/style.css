@@ -41,15 +41,26 @@ input {
 }
 
 #response {
+    display: none;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 22px;
+    color: white;
+    border-radius: 4px;
+}
+
+#response.positive {
+    background-color: #4caf50;
+}
+
+#response.negative {
+    background-color: #f44336;
 }
 
 button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 4px;

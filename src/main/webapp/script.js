@@ -12,21 +12,29 @@ document.getElementById("customerForm").addEventListener("submit", async functio
     }
 
     try {
-        const response = await fetch("http://localhost:8080/bookingsys/add-customer", {
+        const response = await fetch("http://localhost:8080/bookingsys/save-reservation", {
             method: "POST",
             body: new URLSearchParams(formData),
         });
 
+        responseDiv.classList.remove("positive", "negative");
+
         if (response.ok) {
             const message = await response.text();
             responseDiv.textContent = message;
+            responseDiv.classList.add("positive");
         } else {
-            responseDiv.textContent = "Failed to add customer!";
+            responseDiv.textContent = "Failed to make booking!";
+            responseDiv.classList.add("negative");
         }
     } catch (error) {
         console.error("Error:", error);
         responseDiv.textContent = "An error occurred!";
+        responseDiv.classList.remove("positive");
+        responseDiv.classList.add("negative");
     }
+
+    responseDiv.style.display = "block";
 });
 
 // Function to load and display rooms
