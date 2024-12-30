@@ -59,6 +59,10 @@ public class Main {
         CustomerManager.getInstance().addCustomer(customer);
     }
 
+    public static void sendEmail(String email, String name, String room, String checkinDate, String checkoutDate, double totalPayment) {
+        CustomerManager.getInstance().sendConfirmationEmail(email, name, room, checkinDate, checkoutDate, totalPayment);
+    }
+
     public static void testingRoomFetcher() throws SQLException {
         RoomDao roomDao = new RoomDao();
         List<Room> rooms = roomDao.fetchRooms();
@@ -75,9 +79,9 @@ public class Main {
             System.out.println("Connected to database");
 
             // Starting the program
-            /*String[] data = input();
+            String[] data = input();
             Customer customer = createCustomer(data);
-            saveCustomer(customer);*/
+            saveCustomer(customer);
 
             testingRoomFetcher();
 

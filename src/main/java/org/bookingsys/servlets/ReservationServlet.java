@@ -94,6 +94,9 @@ public class ReservationServlet extends HttpServlet {
             // Save reservation
             ReservationManager.getInstance().saveReservation(currentDate, checkinDate, checkoutDate, totalPayment, customerId, roomId);
 
+            // Invoking sending email functionality
+            CustomerManager.getInstance().sendConfirmationEmail(email, firstName, roomParam, String.valueOf(checkinDate), String.valueOf(checkoutDate), totalPayment);
+
             // Success response
             response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_OK);
@@ -102,6 +105,7 @@ public class ReservationServlet extends HttpServlet {
             response.setContentType("text/plain");
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("Failed to make booking. Please try again later.");
+            e.printStackTrace();
         }
     }
 }

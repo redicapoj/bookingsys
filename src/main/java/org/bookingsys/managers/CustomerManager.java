@@ -2,6 +2,7 @@ package org.bookingsys.managers;
 
 import org.bookingsys.dao.CustomerDao;
 import org.bookingsys.entities.Customer;
+import org.bookingsys.util.EmailService;
 
 public class CustomerManager {
     private static CustomerManager instance = new CustomerManager();
@@ -48,4 +49,7 @@ public class CustomerManager {
         }
     }
 
+    public void sendConfirmationEmail(String email, String customerName, String room, String checkinDate, String checkoutDate, double totalPayment) {
+        EmailService.getInstance().sendConfirmationEmail(email, customerName, room, checkinDate, checkoutDate, totalPayment);
+    }
 }
