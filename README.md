@@ -1,9 +1,9 @@
 # Booking System
 
-This is a simple booking system application developed using **Java EE** with **HTML**, **CSS**, and **JavaScript** for the frontend.
+This is a simple booking system form application developed using **Java EE** with **HTML**, **CSS**, and **JavaScript** for the frontend.
 
 ## Features
-- Add, update, and delete customer information
+- Add client and reservation
 - Room and reservation management
 - Integration with MySQL database
 - Backend built with Java EE Servlets and JDBC
